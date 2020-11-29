@@ -3,12 +3,36 @@
     "displayName": "Desktop entry files support",
     "description": "Syntax highlighting for .desktop files",
     "version": "0.0.1",
+    "author": {
+        "name": "almaceleste",
+        "url": "https://almaceleste.github.io"
+    },
+    "publisher": "almaceleste",
     "icon": "icon.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/almaceleste/vscode-desktop-entry-files"
+    },
+    "bugs": {
+        "url": "https://github.com/almaceleste/vscode-desktop-entry-files/issues"
+    },
     "engines": {
         "vscode": "^1.51.0"
     },
     "categories": [
         "Programming Languages"
+    ],
+    "keywords": [
+        "Desktop Entry",
+        ".desktop",
+        ".directory",
+        "desktop",
+        "entry",
+        "linux",
+        "freedesktop.org",
+        "freedesktop",
+        "syntax",
+        "highlighting"
     ],
     "contributes": {
         "languages": [{
@@ -24,6 +48,5 @@
         }]
     },
     "scripts": {
-    },
-    "publisher": "almaceleste"
+    }
 }
