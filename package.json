@@ -1,0 +1,29 @@
+{
+    "name": "desktop-entry-files",
+    "displayName": "Desktop entry files support",
+    "description": "Syntax highlighting for .desktop files",
+    "version": "0.0.1",
+    "icon": "icon.png",
+    "engines": {
+        "vscode": "^1.51.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "desktop",
+            "aliases": ["Desktop entry", ".desktop"],
+            "extensions": [".desktop",".directory"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "desktop",
+            "scopeName": "source.desktop",
+            "path": "./syntaxes/desktop.tmLanguage.json"
+        }]
+    },
+    "scripts": {
+    },
+    "publisher": "almaceleste"
+}

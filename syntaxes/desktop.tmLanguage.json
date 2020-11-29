@@ -1,0 +1,81 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Desktop entry",
+	"foldingStartMarker": "^\\[.+\\]\\s*",
+	"foldingStopMarker": "^\\s*$",
+	"patterns": [
+		{ "include": "#group-headers" },
+		{ "include": "#comments" },
+		{ "include": "#key-value" }
+	],
+	"repository": {
+		"group-headers": {
+			"name": "keyword.control.header.desktop",
+			"match": "^\\[.+\\]\\s*$"
+		},
+		"comments": {
+			"match": "^#.*",
+			"name": "comment.line.desktop"
+		},
+		"key-value": {
+			"match": "^([\\w-]+)(\\[\\w{2}(?:_\\w{2})?(?:\\.[\\w-]*)?(?:@\\w+)?\\])?\\s*(=)\\s*(.*)$",
+			"captures": {
+				"1": {
+					"name": "variable.other.constant.desktop"
+				},
+				"2": {
+					"name": "variable.parameter.desktop"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.desktop"
+				},
+				"4": {
+					"name": "string.desktop",
+					"patterns": [
+						{
+							"name": "keyword.separator.desktop",
+							"match": ";"
+						},
+						{
+							"name": "constant.language.boolean.desktop",
+							"match": "(true|false)"
+						},
+						{
+							"name": "invalid.illegal.desktop",
+							"match": " %[fFuUick]\\s+%[fFuUickdDnNvm]\\b"
+						},
+						{
+							"name": "invalid.deprecated.desktop",
+							"match": " %[dDnNvm]\\b"
+						},
+						{
+							"name": "invalid.invalid.desktop",
+							"match": "\".*%[fFuUickdDnNvm].*\""
+						},
+						{
+							"name": "variable.parameter.desktop",
+							"match": " %[fFuUick]\\b"
+						},
+						{
+							"name": "variable.parameter.desktop",
+							"match": " \\w+=[\\w\\._-]+"
+						},
+						{
+							"name": "entity.name.desktop",
+							"match": "([\\w+/-]+/)([\\w\\.-]+)",
+							"captures": {
+								"1": {
+									"name": "entity.name.section.desktop"
+								},
+								"2": {
+									"name": "entity.name.type.desktop"
+								}
+							}
+						}
+					]
+				}
+			}
+		}
+	},
+	"scopeName": "source.desktop"
+}
