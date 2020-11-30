@@ -18,7 +18,7 @@
 			"name": "comment.line.desktop"
 		},
 		"key-value": {
-			"match": "^([\\w-]+)(\\[\\w{2}(?:_\\w{2})?(?:\\.[\\w-]*)?(?:@\\w+)?\\])?\\s*(=)\\s*(.*)$",
+			"match": "^([\\w-]+)(\\[\\w{2,3}(?:_\\w{2})?(?:\\.[\\w-]*)?(?:@\\w+)?\\])?\\s*(=)\\s*(.*)$",
 			"captures": {
 				"1": {
 					"name": "variable.other.constant.desktop"
@@ -62,13 +62,16 @@
 						},
 						{
 							"name": "entity.name.desktop",
-							"match": "([\\w+/-]+/)([\\w\\.-]+)",
+							"match": "([\\w+/-]+/)([\\w\\.+-]+)(;|$)",
 							"captures": {
 								"1": {
 									"name": "entity.name.section.desktop"
 								},
 								"2": {
 									"name": "entity.name.type.desktop"
+								},
+								"3": {
+									"name": "keyword.separator.desktop"
 								}
 							}
 						}
