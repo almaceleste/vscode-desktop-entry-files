@@ -24,6 +24,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: ${{outputs.package-name}}
+            path: ${{outputs.package-name}}
 
   release:
     needs: build
@@ -36,7 +37,7 @@ jobs:
       - name: download package
         uses: actions/download-artifact@v2
         with:
-            name: ${{package-name}}
+            name: ${{env.package-name}}
       - name: get version
         id: get-version
         run: echo ::set-output name=version::${{GITHUB_REF/refs\/tags\/v/}}
@@ -46,4 +47,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           automatic_release_tag: "latest"
           prerelease: false
-          files: ${{package-name}}
+          files: ${{env.package-name}}
