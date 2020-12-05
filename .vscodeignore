@@ -1,4 +1,7 @@
+.github/**
 .vscode/**
 .vscode-test/**
+.gitattributes
 .gitignore
 vsc-extension-quickstart.md
+icon.xcf
