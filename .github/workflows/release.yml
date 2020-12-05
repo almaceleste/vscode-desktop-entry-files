@@ -1,0 +1,49 @@
+name: release
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      package-name: ${{steps.package-name.outputs.package_name}}
+    steps:
+      - uses: actions/checkout@master
+      - run: npm install
+      - name: install vsce
+        run: npm install -g vsce
+      - name: package an extension
+        run: vsce package
+      - name: get package name
+        id: package-name
+        run: echo "::set-output name=package_name::$(ls | grep '^.*\.vsix$' | head -1)"
+      # - name: store package name
+      #   run: echo ${{steps.package-name.outputs.package_name}} >> $GITHUB_ENV # needed?
+      - name: upload package
+        uses: actions/upload-artifact@v2
+        with:
+            name: ${{outputs.package-name}}
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      package-name: ${{needs.build.outputs.package-name}}
+    outputs:
+      version: ${{steps.get-version.outputs.version}}
+    steps:
+      - name: download package
+        uses: actions/download-artifact@v2
+        with:
+            name: ${{package-name}}
+      - name: get version
+        id: get-version
+        run: echo ::set-output name=version::${{GITHUB_REF/refs\/tags\/v/}}
+      - name: create release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: "latest"
+          prerelease: false
+          files: ${{package-name}}
