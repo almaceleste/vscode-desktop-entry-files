@@ -4,7 +4,7 @@ Adds support for .desktop and .directory files to the VS Code.
 
 ## Installation
 
-Install from Github: []()  
+Install from [Github repository](https://github.com/almaceleste/vscode-desktop-entry-files/releases)  
 or  
 Launch VS Code Quick Open (Ctrl+P) and run command `ext install almaceleste.desktop-entry-files`
 
@@ -26,9 +26,6 @@ Errors highlighting example
 * Folding
 * IntelliSense
 
-## Release Notes
+## Feedback & Questions
 
-### 0.1.0
-
-Added: Syntax highlighting  
-Added: Errors highlighting
+* File a bug or feature request in [GitHub Issues](https://github.com/almaceleste/vscode-desktop-entry-files/issues)
